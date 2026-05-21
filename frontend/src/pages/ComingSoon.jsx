@@ -53,7 +53,7 @@ const ComingSoon = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#F9F7F3] text-[#1C1E1C] selection:bg-[#3E4C3B] selection:text-[#F9F7F3]" data-testid="coming-soon-page">
+    <main className="min-h-screen overflow-x-hidden bg-[#F9F7F3] text-[#1C1E1C] selection:bg-[#3E4C3B] selection:text-[#F9F7F3]" data-testid="coming-soon-page">
       {/* ===== Navigation ===== */}
       <nav
         className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-[#F9F7F3]/70 border-b border-[#E5E0D8]/60"
@@ -148,14 +148,14 @@ const ComingSoon = () => {
       {/* ===== Brand / Founder ===== */}
       <section
         id="brand"
-        className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 px-6 md:px-12 py-24 md:py-32"
+        className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 px-6 md:px-12 py-20 md:py-32"
         data-testid="brand-section"
       >
         <div className="md:col-span-1">
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">01 — Brand</p>
         </div>
         <div className="md:col-span-6">
-          <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05] text-[#1C1E1C]">
+          <h2 className="font-serif-display text-3xl sm:text-4xl md:text-6xl leading-[1.05] text-[#1C1E1C]">
             A modern Indian house, <em className="text-[#3E4C3B]">built on stillness.</em>
           </h2>
           <p className="mt-8 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
@@ -165,7 +165,7 @@ const ComingSoon = () => {
           </p>
         </div>
 
-        <div className="md:col-start-9 md:col-span-4 border-l border-[#E5E0D8] pl-8">
+        <div className="md:col-start-9 md:col-span-4 md:border-l md:border-[#E5E0D8] md:pl-8 border-t border-[#E5E0D8] pt-8 md:border-t-0 md:pt-0">
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">Founder</p>
           <h3 className="font-serif-display text-2xl md:text-3xl mt-4 text-[#1C1E1C]">Pintu Padhy</h3>
           <p className="mt-6 text-sm md:text-base text-[#595C58] leading-relaxed">
@@ -183,15 +183,15 @@ const ComingSoon = () => {
       {/* ===== Collections ===== */}
       <section
         id="collections"
-        className="px-6 md:px-12 py-24 md:py-32"
+        className="px-6 md:px-12 py-20 md:py-32"
         data-testid="collections-section"
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 mb-10 md:mb-16">
           <div className="md:col-span-1">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">02 — Coming</p>
           </div>
           <div className="md:col-span-7">
-            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05]">
+            <h2 className="font-serif-display text-3xl sm:text-4xl md:text-6xl leading-[1.05]">
               The first <em className="text-[#3E4C3B]">chapter.</em>
             </h2>
           </div>
@@ -202,12 +202,12 @@ const ComingSoon = () => {
           </div>
         </div>
 
-        <div className="border-t border-b border-[#E5E0D8] py-10 md:py-14" data-testid="products-list">
-          <p className="font-serif-display text-2xl md:text-4xl text-[#1C1E1C] leading-snug">
+        <div className="border-t border-b border-[#E5E0D8] py-8 md:py-14" data-testid="products-list">
+          <p className="font-serif-display text-xl sm:text-2xl md:text-4xl text-[#1C1E1C] leading-snug break-words">
             Structured handbags
-            <span className="text-[#1C1E1C]/25 mx-3 md:mx-5">·</span>
+            <span className="text-[#1C1E1C]/25 mx-2 md:mx-5">·</span>
             Limited collections
-            <span className="text-[#1C1E1C]/25 mx-3 md:mx-5">·</span>
+            <span className="text-[#1C1E1C]/25 mx-2 md:mx-5">·</span>
             <em className="text-[#3E4C3B]">Plant-based leather craftsmanship</em>
           </p>
         </div>
@@ -216,7 +216,7 @@ const ComingSoon = () => {
       {/* ===== Waitlist ===== */}
       <section
         id="waitlist"
-        className="px-6 md:px-12 py-24 md:py-32 bg-[#1C1E1C] text-[#F9F7F3]"
+        className="px-6 md:px-12 py-20 md:py-32 bg-[#1C1E1C] text-[#F9F7F3]"
         data-testid="waitlist-section"
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -224,7 +224,7 @@ const ComingSoon = () => {
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">03 — Waitlist</p>
           </div>
           <div className="md:col-span-5">
-            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05] text-[#F9F7F3]">
+            <h2 className="font-serif-display text-3xl sm:text-4xl md:text-6xl leading-[1.05] text-[#F9F7F3]">
               Be the first <em className="text-[#C9C2B0]">to know.</em>
             </h2>
             <p className="mt-8 text-base md:text-lg text-[#F9F7F3]/60 leading-relaxed max-w-md">
@@ -283,13 +283,13 @@ const ComingSoon = () => {
       {/* ===== Contact / Footer ===== */}
       <footer
         id="contact"
-        className="px-6 md:px-12 py-24 md:py-32 bg-[#0F110F] text-[#F9F7F3]"
+        className="px-6 md:px-12 py-20 md:py-32 bg-[#0F110F] text-[#F9F7F3]"
         data-testid="footer-section"
       >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
           <div className="md:col-span-5">
             <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">Contact</p>
-            <h3 className="font-serif-display text-3xl md:text-5xl mt-6 leading-[1.05]">
+            <h3 className="font-serif-display text-2xl sm:text-3xl md:text-5xl mt-6 leading-[1.05]">
               For press, partnerships, and patient curiosity.
             </h3>
           </div>
