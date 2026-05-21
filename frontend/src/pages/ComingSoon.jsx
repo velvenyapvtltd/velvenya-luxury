@@ -17,11 +17,9 @@ const MARQUEE_ITEMS = [
 ];
 
 const PRODUCTS = [
-  { name: "Plant-based leather handbags", index: "01" },
-  { name: "Wallets", index: "02" },
-  { name: "Belts", index: "03" },
-  { name: "Luxury accessories", index: "04" },
-  { name: "Limited collections", index: "05" },
+  { name: "Structured handbags", index: "01" },
+  { name: "Limited collections", index: "02" },
+  { name: "Plant-based leather craftsmanship", index: "03" },
 ];
 
 const ComingSoon = () => {
@@ -200,7 +198,7 @@ const ComingSoon = () => {
           </div>
           <div className="md:col-start-10 md:col-span-3 self-end">
             <p className="text-sm text-[#595C58]">
-              A considered debut of five categories, released as limited editions.
+              A considered debut of three offerings, released as limited editions.
             </p>
           </div>
         </div>
