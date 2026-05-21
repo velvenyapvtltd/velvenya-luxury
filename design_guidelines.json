@@ -1,0 +1,83 @@
+{
+  "project_name": "VELVENYA Coming Soon",
+  "domain": "Eco-luxury Handbags & Accessories",
+  "theme": "light",
+  "archetype": "1 (Organic & Earthy)",
+  "design_philosophy": "Text-only minimalist luxury. Generous spacing, large expressive typography, asymmetrical layouts, and absolute reliance on grid and whitespace over imagery. No product photos. High-end editorial feel.",
+  "colors": {
+    "background": "#F9F7F3",
+    "foreground": "#1C1E1C",
+    "primary": "#3E4C3B",
+    "primary_foreground": "#FFFFFF",
+    "muted": "#E5E0D8",
+    "muted_foreground": "#595C58",
+    "border": "#E5E0D8",
+    "input_border": "#1C1E1C"
+  },
+  "typography": {
+    "font_families": {
+      "heading": "Cormorant Garamond, serif",
+      "body": "Outfit, sans-serif"
+    },
+    "rules": {
+      "h1": "text-5xl sm:text-6xl md:text-7xl font-light tracking-tighter leading-none text-[#1C1E1C]",
+      "h2": "text-3xl sm:text-4xl md:text-5xl font-light tracking-tight leading-tight",
+      "h3": "text-xl sm:text-2xl font-light",
+      "body": "text-base md:text-lg font-light leading-relaxed tracking-wide text-[#595C58]",
+      "overline": "text-xs md:text-sm uppercase tracking-[0.2em] font-medium"
+    }
+  },
+  "layout_and_spacing": {
+    "spacing_scale": "Generous. Use py-24 to py-32 for section padding.",
+    "grid_system": "Mode A: The Tetris Grid. Heavy use of asymmetrical column spanning (e.g., col-span-4 vs col-span-8) to create visual tension. Never fill 100% of the grid perfectly.",
+    "alignment": "Left-aligned dominant for text. Avoid centered blocks unless for specific poetic emphasis."
+  },
+  "components_strategy": {
+    "navigation": {
+      "style": "Glassmorphism (Crystal)",
+      "classes": "fixed top-0 w-full z-50 backdrop-blur-xl bg-[#F9F7F3]/70 border-b border-[#E5E0D8]/50 text-sm uppercase tracking-[0.2em]"
+    },
+    "hero": {
+      "layout": "Min-height 90vh, flex flex-col justify-end pb-24 px-6 md:px-12",
+      "elements": "Massive typography for 'VELVENYA'. Subtext: 'Silence is the oldest luxury.'"
+    },
+    "marquee": {
+      "style": "Editorial Ribbon",
+      "classes": "py-8 border-y border-[#E5E0D8] overflow-hidden",
+      "text_style": "font-serif text-2xl md:text-4xl italic tracking-wide text-[#3E4C3B]",
+      "content": "Plant-based leather • Conscious craftsmanship • Timeless design • "
+    },
+    "bento_grid": {
+      "usage": "About the Brand & Founder (Pintu Padhy)",
+      "classes": "grid grid-cols-1 md:grid-cols-12 gap-12 px-6 md:px-12 py-24",
+      "about_span": "md:col-span-7",
+      "founder_span": "md:col-start-9 md:col-span-4"
+    },
+    "products_list": {
+      "layout": "Vertical list, border-b separated",
+      "item_classes": "group flex justify-between items-center py-6 md:py-8 border-b border-[#E5E0D8] cursor-pointer",
+      "text_classes": "font-serif text-2xl md:text-4xl text-[#1C1E1C] group-hover:italic group-hover:text-[#3E4C3B] transition-all duration-300"
+    },
+    "waitlist_form": {
+      "style": "Minimalist single-line input",
+      "input_classes": "w-full bg-transparent border-b border-[#1C1E1C] rounded-none px-0 py-4 text-lg md:text-2xl focus:outline-none focus:ring-0 focus:border-[#3E4C3B] placeholder-[#595C58]/50",
+      "button_classes": "mt-8 px-8 py-4 bg-[#1C1E1C] text-[#F9F7F3] uppercase tracking-[0.2em] text-sm hover:bg-[#3E4C3B] transition-colors"
+    },
+    "footer": {
+      "layout": "Grid-based, large spacing",
+      "classes": "py-24 px-6 md:px-12 bg-[#1C1E1C] text-[#F9F7F3]"
+    }
+  },
+  "motion_and_interaction": {
+    "scrolling": "Lenis smooth scroll mandatory.",
+    "entrance": "Framer motion fade-up with slight y-axis translation for all text blocks.",
+    "hover_states": "Text links should have a subtle 1px underline expansion. Product lists italicize on hover."
+  },
+  "media": {
+    "images": [],
+    "instructions": "Strictly NO IMAGES. The entire site relies on typography, negative space, and borders."
+  },
+  "testing": {
+    "requirements": "All interactive elements (buttons, inputs, links) MUST have data-testid attributes."
+  }
+}
