@@ -8,7 +8,6 @@ const API = `${BACKEND_URL}/api`;
 
 const NAV_LINKS = [
   { label: "Brand", href: "#brand" },
-  { label: "Philosophy", href: "#philosophy" },
   { label: "Collections", href: "#collections" },
   { label: "Contact", href: "#contact" },
 ];
@@ -28,21 +27,6 @@ const PRODUCTS = [
   { name: "Belts", index: "03" },
   { name: "Luxury accessories", index: "04" },
   { name: "Limited collections", index: "05" },
-];
-
-const PHILOSOPHY = [
-  {
-    title: "Material honesty",
-    body: "Cactus, cork, and apple-fibre leathers — engineered with the rigour of haute maroquinerie, yet whispered into being without harm.",
-  },
-  {
-    title: "Slow craft",
-    body: "Each piece is finished by hand in Andhra Pradesh, where time is given back to leather, thread, and silence.",
-  },
-  {
-    title: "Considered design",
-    body: "Forms reduced to their truest shape. No ornament without intention. A vocabulary built to outlast the season.",
-  },
 ];
 
 const ComingSoon = () => {
@@ -200,40 +184,6 @@ const ComingSoon = () => {
         </div>
       </section>
 
-      {/* ===== Philosophy ===== */}
-      <section
-        id="philosophy"
-        className="px-6 md:px-12 py-24 md:py-32 bg-[#F2EEE6]"
-        data-testid="philosophy-section"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 md:mb-20">
-          <div className="md:col-span-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">02 — Philosophy</p>
-          </div>
-          <div className="md:col-span-8">
-            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05]">
-              The craft of <em className="text-[#3E4C3B]">restraint.</em>
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E5E0D8]">
-          {PHILOSOPHY.map((p, idx) => (
-            <div
-              key={p.title}
-              className="bg-[#F2EEE6] p-8 md:p-12 min-h-[280px] flex flex-col justify-between"
-              data-testid={`philosophy-card-${idx}`}
-            >
-              <p className="font-serif-display italic text-5xl text-[#3E4C3B]/40">0{idx + 1}</p>
-              <div className="mt-12">
-                <h3 className="font-serif-display text-2xl md:text-3xl text-[#1C1E1C]">{p.title}</h3>
-                <p className="mt-4 text-sm md:text-base text-[#595C58] leading-relaxed">{p.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ===== Collections ===== */}
       <section
         id="collections"
@@ -242,7 +192,7 @@ const ComingSoon = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 md:mb-16">
           <div className="md:col-span-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">03 — Coming</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">02 — Coming</p>
           </div>
           <div className="md:col-span-7">
             <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05]">
@@ -285,7 +235,7 @@ const ComingSoon = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">04 — Waitlist</p>
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">03 — Waitlist</p>
           </div>
           <div className="md:col-span-5">
             <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05] text-[#F9F7F3]">
