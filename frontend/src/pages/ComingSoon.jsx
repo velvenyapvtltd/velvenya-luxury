@@ -13,12 +13,7 @@ const NAV_LINKS = [
 ];
 
 const MARQUEE_ITEMS = [
-  "Plant-based leather",
-  "Conscious craftsmanship",
-  "Timeless design",
-  "Made in India",
-  "Quiet elegance",
-  "Limited collections",
+  "Crafted in India",
 ];
 
 const PRODUCTS = [
@@ -67,8 +62,8 @@ const ComingSoon = () => {
         data-testid="main-nav"
       >
         <div className="flex items-center justify-between px-6 md:px-12 py-5">
-          <a href="#top" className="font-serif-display text-xl tracking-[0.3em]" data-testid="nav-logo">
-            VELVENYA
+          <a href="#top" className="text-[11px] uppercase tracking-[0.3em] text-[#1C1E1C]/70" data-testid="nav-logo">
+            India · 2026
           </a>
           <ul className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.25em] text-[#1C1E1C]/80">
             {NAV_LINKS.map((l) => (
@@ -84,7 +79,7 @@ const ComingSoon = () => {
             className="text-[11px] uppercase tracking-[0.25em] border-b border-[#1C1E1C] pb-0.5 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
             data-testid="nav-waitlist-cta"
           >
-            Join the list
+            Notify Me
           </a>
         </div>
       </nav>
@@ -107,7 +102,7 @@ const ComingSoon = () => {
 
           <div className="col-span-12 md:col-span-9">
             <h1
-              className="font-serif-display text-[18vw] md:text-[14vw] leading-[0.85] tracking-[-0.04em] text-[#1C1E1C] fade-up"
+              className="font-serif-display text-[16vw] md:text-[11vw] leading-[0.85] tracking-[-0.04em] text-[#1C1E1C] fade-up"
               data-testid="hero-title"
             >
               VELVENYA
@@ -130,7 +125,7 @@ const ComingSoon = () => {
               className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] border-b border-[#1C1E1C] pb-1 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
               data-testid="hero-cta-join"
             >
-              Join the waitlist <ArrowUpRight size={14} strokeWidth={1.2} />
+              Notify me <ArrowUpRight size={14} strokeWidth={1.2} />
             </a>
           </div>
         </div>
@@ -177,8 +172,12 @@ const ComingSoon = () => {
           <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">Founder</p>
           <h3 className="font-serif-display text-2xl md:text-3xl mt-4 text-[#1C1E1C]">Pintu Padhy</h3>
           <p className="mt-6 text-sm md:text-base text-[#595C58] leading-relaxed">
-            Founder of VELVENYA. A practitioner of patience, building a house where conscience and beauty
-            are not in conversation — they are the same sentence.
+            Founded by Pintu Padhy, VELVENYA is an independent Indian eco-luxury brand built with a vision
+            to create quieter, more conscious luxury.
+          </p>
+          <p className="mt-4 text-sm md:text-base text-[#595C58] leading-relaxed">
+            Started at the age of 20, the brand reflects a belief in timeless design, refined craftsmanship,
+            and modern sustainability.
           </p>
           <p className="mt-8 font-serif-display italic text-xl text-[#3E4C3B]">— Andhra Pradesh, India</p>
         </div>
@@ -242,7 +241,7 @@ const ComingSoon = () => {
               Be the first <em className="text-[#C9C2B0]">to know.</em>
             </h2>
             <p className="mt-8 text-base md:text-lg text-[#F9F7F3]/60 leading-relaxed max-w-md">
-              Subscribe for an early invitation to our debut. No noise — only what matters, only when it does.
+              Private updates from Velvenya.
             </p>
           </div>
 
@@ -285,7 +284,7 @@ const ComingSoon = () => {
                   className="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-[#F9F7F3] text-[#1C1E1C] uppercase tracking-[0.25em] text-xs hover:bg-[#C9C2B0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   data-testid="waitlist-submit-button"
                 >
-                  {loading ? "Subscribing…" : "Subscribe"}
+                  {loading ? "Sending…" : "Notify Me"}
                   <ArrowUpRight size={14} strokeWidth={1.2} />
                 </button>
               </form>
