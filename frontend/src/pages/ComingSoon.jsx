@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Instagram, Linkedin, Twitter, Facebook, ArrowUpRight, MapPin, Mail } from "lucide-react";
+import { Instagram, Linkedin, ArrowUpRight, MapPin, Mail } from "lucide-react";
 import { toast } from "sonner";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -74,7 +74,7 @@ const ComingSoon = () => {
           </ul>
           <a
             href="#waitlist"
-            className="text-[11px] uppercase tracking-[0.25em] border-b border-[#1C1E1C] pb-0.5 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
+            className="hidden md:inline-block text-[11px] uppercase tracking-[0.25em] border-b border-[#1C1E1C] pb-0.5 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
             data-testid="nav-waitlist-cta"
           >
             Notify Me
@@ -85,7 +85,7 @@ const ComingSoon = () => {
       {/* ===== Hero ===== */}
       <section
         id="top"
-        className="relative min-h-[100vh] flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-12 pt-32"
+        className="relative min-h-screen flex flex-col justify-center md:justify-end pb-12 md:pb-28 px-6 md:px-12 pt-28 md:pt-32"
         data-testid="hero-section"
       >
         <div className="grid grid-cols-12 gap-6 md:gap-8">
@@ -334,20 +334,6 @@ const ComingSoon = () => {
               >
                 <Linkedin size={16} strokeWidth={1.2} /> LinkedIn — Velvenya
               </a>
-              <a
-                href="#"
-                className="flex items-center gap-3 text-[#F9F7F3]/40"
-                data-testid="social-twitter"
-              >
-                <Twitter size={16} strokeWidth={1.2} /> Twitter — soon
-              </a>
-              <a
-                href="#"
-                className="flex items-center gap-3 text-[#F9F7F3]/40"
-                data-testid="social-facebook"
-              >
-                <Facebook size={16} strokeWidth={1.2} /> Facebook — soon
-              </a>
             </div>
           </div>
         </div>
@@ -355,7 +341,7 @@ const ComingSoon = () => {
         <div className="mt-20 md:mt-28 pt-8 border-t border-[#F9F7F3]/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <p className="font-serif-display text-2xl tracking-[0.4em]">VELVENYA</p>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">
-            © {new Date().getFullYear()} Velvenya Private Limited — All rights reserved
+            © 2026 VELVENYA
           </p>
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40 italic">
             Silence is the oldest luxury.
