@@ -160,7 +160,7 @@ const ComingSoon = () => {
           </h2>
           <p className="mt-8 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
             VELVENYA creates eco-luxury handbags and accessories that blend minimal aesthetics with
-            sustainable materials and refined craftsmanship. We believe restraint is a kind of opulence —
+            sustainable materials and refined craftsmanship. We believe restraint is a kind of opulence,
             and that the truest objects do not announce themselves.
           </p>
         </div>
@@ -176,7 +176,7 @@ const ComingSoon = () => {
             Started at the age of 20, the brand reflects a belief in timeless design, refined craftsmanship,
             and modern sustainability.
           </p>
-          <p className="mt-8 font-serif-display italic text-xl text-[#3E4C3B]">— Andhra Pradesh, India</p>
+          <p className="mt-8 font-serif-display italic text-xl text-[#3E4C3B]">Andhra Pradesh, India</p>
         </div>
       </section>
 
