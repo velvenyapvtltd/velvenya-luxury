@@ -317,13 +317,13 @@ const ComingSoon = () => {
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">Elsewhere</p>
             <div className="space-y-3">
               <a
-                href="https://instagram.com/velvenya"
+                href="https://instagram.com/velvenya_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 link-underline"
                 data-testid="social-instagram"
               >
-                <Instagram size={16} strokeWidth={1.2} /> Instagram — @velvenya
+                <Instagram size={16} strokeWidth={1.2} /> Instagram — @velvenya_official
               </a>
               <a
                 href="https://www.linkedin.com/company/velvenya"
@@ -332,7 +332,7 @@ const ComingSoon = () => {
                 className="flex items-center gap-3 link-underline"
                 data-testid="social-linkedin"
               >
-                <Linkedin size={16} strokeWidth={1.2} /> LinkedIn — Velvenya Pvt Ltd
+                <Linkedin size={16} strokeWidth={1.2} /> LinkedIn — Velvenya
               </a>
               <a
                 href="#"
