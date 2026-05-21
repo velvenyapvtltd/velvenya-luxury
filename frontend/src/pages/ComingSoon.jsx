@@ -90,12 +90,6 @@ const ComingSoon = () => {
       >
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           <div className="col-span-12 md:col-span-3 mb-10 md:mb-0 fade-up fade-up-delay-1">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">
-              Eco-luxury · Est. 2025
-            </p>
-            <p className="mt-3 text-[11px] uppercase tracking-[0.3em] text-[#595C58]">
-              Andhra Pradesh, India
-            </p>
           </div>
 
           <div className="col-span-12 md:col-span-9">
@@ -112,8 +106,13 @@ const ComingSoon = () => {
               “Silence is the oldest luxury.”
             </p>
             <p className="mt-8 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
-              Eco-luxury handbags &amp; accessories, crafted in India. A modern house built around quiet
-              elegance, timeless design, and conscious craftsmanship — arriving soon.
+              Eco-luxury handbags crafted in India.
+            </p>
+            <p className="mt-2 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
+              Built with a quieter approach to design, craftsmanship, and modern luxury.
+            </p>
+            <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-[#3E4C3B]">
+              Coming soon.
             </p>
           </div>
 
@@ -135,12 +134,12 @@ const ComingSoon = () => {
         data-testid="values-marquee"
       >
         <div className="marquee-track">
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+          {Array.from({ length: 12 }).map((_, i) => (
             <span
               key={i}
-              className="font-serif-display italic text-2xl md:text-4xl tracking-wide text-[#3E4C3B] px-8"
+              className="font-serif-display italic text-2xl md:text-4xl tracking-wide text-[#3E4C3B] whitespace-nowrap"
             >
-              {item} <span className="text-[#1C1E1C]/30 mx-2">·</span>
+              Crafted in India <span className="text-[#1C1E1C]/30 mx-3">·</span>
             </span>
           ))}
         </div>
@@ -203,25 +202,15 @@ const ComingSoon = () => {
           </div>
         </div>
 
-        <ul className="border-t border-[#E5E0D8]" data-testid="products-list">
-          {PRODUCTS.map((p) => (
-            <li
-              key={p.name}
-              className="group flex justify-between items-center py-6 md:py-8 border-b border-[#E5E0D8] cursor-default"
-              data-testid={`product-${p.index}`}
-            >
-              <div className="flex items-baseline gap-6 md:gap-12">
-                <span className="font-sans-body text-xs md:text-sm text-[#595C58] tracking-[0.2em]">
-                  {p.index}
-                </span>
-                <span className="font-serif-display text-2xl md:text-4xl text-[#1C1E1C] group-hover:italic group-hover:text-[#3E4C3B] transition-all duration-500">
-                  {p.name}
-                </span>
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#595C58]/60">Soon</span>
-            </li>
-          ))}
-        </ul>
+        <div className="border-t border-b border-[#E5E0D8] py-10 md:py-14" data-testid="products-list">
+          <p className="font-serif-display text-2xl md:text-4xl text-[#1C1E1C] leading-snug">
+            Structured handbags
+            <span className="text-[#1C1E1C]/25 mx-3 md:mx-5">·</span>
+            Limited collections
+            <span className="text-[#1C1E1C]/25 mx-3 md:mx-5">·</span>
+            <em className="text-[#3E4C3B]">Plant-based leather craftsmanship</em>
+          </p>
+        </div>
       </section>
 
       {/* ===== Waitlist ===== */}
