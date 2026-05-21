@@ -85,7 +85,7 @@ const ComingSoon = () => {
       {/* ===== Hero ===== */}
       <section
         id="top"
-        className="relative min-h-screen flex flex-col justify-center md:justify-end pb-12 md:pb-28 px-6 md:px-12 pt-28 md:pt-32"
+        className="relative flex flex-col justify-start md:justify-end md:min-h-screen pb-10 md:pb-28 px-6 md:px-12 pt-10 md:pt-32"
         data-testid="hero-section"
       >
         <div className="grid grid-cols-12 gap-6 md:gap-8">
