@@ -1,0 +1,433 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Instagram, Linkedin, Twitter, Facebook, ArrowUpRight, MapPin, Mail } from "lucide-react";
+import { toast } from "sonner";
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const NAV_LINKS = [
+  { label: "Brand", href: "#brand" },
+  { label: "Philosophy", href: "#philosophy" },
+  { label: "Collections", href: "#collections" },
+  { label: "Contact", href: "#contact" },
+];
+
+const MARQUEE_ITEMS = [
+  "Plant-based leather",
+  "Conscious craftsmanship",
+  "Timeless design",
+  "Made in India",
+  "Quiet elegance",
+  "Limited collections",
+];
+
+const PRODUCTS = [
+  { name: "Plant-based leather handbags", index: "01" },
+  { name: "Wallets", index: "02" },
+  { name: "Belts", index: "03" },
+  { name: "Luxury accessories", index: "04" },
+  { name: "Limited collections", index: "05" },
+];
+
+const PHILOSOPHY = [
+  {
+    title: "Material honesty",
+    body: "Cactus, cork, and apple-fibre leathers — engineered with the rigour of haute maroquinerie, yet whispered into being without harm.",
+  },
+  {
+    title: "Slow craft",
+    body: "Each piece is finished by hand in Andhra Pradesh, where time is given back to leather, thread, and silence.",
+  },
+  {
+    title: "Considered design",
+    body: "Forms reduced to their truest shape. No ornament without intention. A vocabulary built to outlast the season.",
+  },
+];
+
+const ComingSoon = () => {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    // ping the API root so the backend is awoken (and to verify connectivity)
+    axios.get(`${API}/`).catch(() => {});
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const res = await axios.post(`${API}/waitlist`, { email });
+      toast.success(res.data.message || "Welcome to VELVENYA.");
+      setSubmitted(true);
+      setEmail("");
+    } catch (err) {
+      const msg = err?.response?.data?.detail || "Something went quiet. Please try again.";
+      toast.error(typeof msg === "string" ? msg : "Could not subscribe.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-[#F9F7F3] text-[#1C1E1C] selection:bg-[#3E4C3B] selection:text-[#F9F7F3]" data-testid="coming-soon-page">
+      {/* ===== Navigation ===== */}
+      <nav
+        className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-[#F9F7F3]/70 border-b border-[#E5E0D8]/60"
+        data-testid="main-nav"
+      >
+        <div className="flex items-center justify-between px-6 md:px-12 py-5">
+          <a href="#top" className="font-serif-display text-xl tracking-[0.3em]" data-testid="nav-logo">
+            VELVENYA
+          </a>
+          <ul className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.25em] text-[#1C1E1C]/80">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="link-underline" data-testid={`nav-link-${l.label.toLowerCase()}`}>
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a
+            href="#waitlist"
+            className="text-[11px] uppercase tracking-[0.25em] border-b border-[#1C1E1C] pb-0.5 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
+            data-testid="nav-waitlist-cta"
+          >
+            Join the list
+          </a>
+        </div>
+      </nav>
+
+      {/* ===== Hero ===== */}
+      <section
+        id="top"
+        className="relative min-h-[100vh] flex flex-col justify-end pb-20 md:pb-28 px-6 md:px-12 pt-32"
+        data-testid="hero-section"
+      >
+        <div className="grid grid-cols-12 gap-6 md:gap-8">
+          <div className="col-span-12 md:col-span-3 mb-10 md:mb-0 fade-up fade-up-delay-1">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">
+              Eco-luxury · Est. 2025
+            </p>
+            <p className="mt-3 text-[11px] uppercase tracking-[0.3em] text-[#595C58]">
+              Andhra Pradesh, India
+            </p>
+          </div>
+
+          <div className="col-span-12 md:col-span-9">
+            <h1
+              className="font-serif-display text-[18vw] md:text-[14vw] leading-[0.85] tracking-[-0.04em] text-[#1C1E1C] fade-up"
+              data-testid="hero-title"
+            >
+              VELVENYA
+            </h1>
+          </div>
+
+          <div className="col-span-12 md:col-start-4 md:col-span-6 mt-12 md:mt-16 fade-up fade-up-delay-2">
+            <p className="font-serif-display italic text-2xl md:text-4xl text-[#3E4C3B] leading-tight">
+              “Silence is the oldest luxury.”
+            </p>
+            <p className="mt-8 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
+              Eco-luxury handbags &amp; accessories, crafted in India. A modern house built around quiet
+              elegance, timeless design, and conscious craftsmanship — arriving soon.
+            </p>
+          </div>
+
+          <div className="col-span-12 md:col-start-10 md:col-span-3 mt-12 md:mt-16 flex md:justify-end fade-up fade-up-delay-3">
+            <a
+              href="#waitlist"
+              className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.3em] border-b border-[#1C1E1C] pb-1 hover:text-[#3E4C3B] hover:border-[#3E4C3B] transition-colors"
+              data-testid="hero-cta-join"
+            >
+              Join the waitlist <ArrowUpRight size={14} strokeWidth={1.2} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Marquee ===== */}
+      <section
+        className="py-7 md:py-9 border-y border-[#E5E0D8] overflow-hidden bg-[#F9F7F3]"
+        data-testid="values-marquee"
+      >
+        <div className="marquee-track">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+            <span
+              key={i}
+              className="font-serif-display italic text-2xl md:text-4xl tracking-wide text-[#3E4C3B] px-8"
+            >
+              {item} <span className="text-[#1C1E1C]/30 mx-2">·</span>
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Brand / Founder ===== */}
+      <section
+        id="brand"
+        className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 px-6 md:px-12 py-24 md:py-32"
+        data-testid="brand-section"
+      >
+        <div className="md:col-span-1">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">01 — Brand</p>
+        </div>
+        <div className="md:col-span-6">
+          <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05] text-[#1C1E1C]">
+            A modern Indian house, <em className="text-[#3E4C3B]">built on stillness.</em>
+          </h2>
+          <p className="mt-8 text-base md:text-lg text-[#595C58] leading-relaxed max-w-xl">
+            VELVENYA creates eco-luxury handbags and accessories that blend minimal aesthetics with
+            sustainable materials and refined craftsmanship. We believe restraint is a kind of opulence —
+            and that the truest objects do not announce themselves.
+          </p>
+        </div>
+
+        <div className="md:col-start-9 md:col-span-4 border-l border-[#E5E0D8] pl-8">
+          <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">Founder</p>
+          <h3 className="font-serif-display text-2xl md:text-3xl mt-4 text-[#1C1E1C]">Pintu Padhy</h3>
+          <p className="mt-6 text-sm md:text-base text-[#595C58] leading-relaxed">
+            Founder of VELVENYA. A practitioner of patience, building a house where conscience and beauty
+            are not in conversation — they are the same sentence.
+          </p>
+          <p className="mt-8 font-serif-display italic text-xl text-[#3E4C3B]">— Andhra Pradesh, India</p>
+        </div>
+      </section>
+
+      {/* ===== Philosophy ===== */}
+      <section
+        id="philosophy"
+        className="px-6 md:px-12 py-24 md:py-32 bg-[#F2EEE6]"
+        data-testid="philosophy-section"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 md:mb-20">
+          <div className="md:col-span-1">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">02 — Philosophy</p>
+          </div>
+          <div className="md:col-span-8">
+            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05]">
+              The craft of <em className="text-[#3E4C3B]">restraint.</em>
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#E5E0D8]">
+          {PHILOSOPHY.map((p, idx) => (
+            <div
+              key={p.title}
+              className="bg-[#F2EEE6] p-8 md:p-12 min-h-[280px] flex flex-col justify-between"
+              data-testid={`philosophy-card-${idx}`}
+            >
+              <p className="font-serif-display italic text-5xl text-[#3E4C3B]/40">0{idx + 1}</p>
+              <div className="mt-12">
+                <h3 className="font-serif-display text-2xl md:text-3xl text-[#1C1E1C]">{p.title}</h3>
+                <p className="mt-4 text-sm md:text-base text-[#595C58] leading-relaxed">{p.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ===== Collections ===== */}
+      <section
+        id="collections"
+        className="px-6 md:px-12 py-24 md:py-32"
+        data-testid="collections-section"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12 md:mb-16">
+          <div className="md:col-span-1">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#595C58]">03 — Coming</p>
+          </div>
+          <div className="md:col-span-7">
+            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05]">
+              The first <em className="text-[#3E4C3B]">chapter.</em>
+            </h2>
+          </div>
+          <div className="md:col-start-10 md:col-span-3 self-end">
+            <p className="text-sm text-[#595C58]">
+              A considered debut of five categories, released as limited editions.
+            </p>
+          </div>
+        </div>
+
+        <ul className="border-t border-[#E5E0D8]" data-testid="products-list">
+          {PRODUCTS.map((p) => (
+            <li
+              key={p.name}
+              className="group flex justify-between items-center py-6 md:py-8 border-b border-[#E5E0D8] cursor-default"
+              data-testid={`product-${p.index}`}
+            >
+              <div className="flex items-baseline gap-6 md:gap-12">
+                <span className="font-sans-body text-xs md:text-sm text-[#595C58] tracking-[0.2em]">
+                  {p.index}
+                </span>
+                <span className="font-serif-display text-2xl md:text-4xl text-[#1C1E1C] group-hover:italic group-hover:text-[#3E4C3B] transition-all duration-500">
+                  {p.name}
+                </span>
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#595C58]/60">Soon</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ===== Waitlist ===== */}
+      <section
+        id="waitlist"
+        className="px-6 md:px-12 py-24 md:py-32 bg-[#1C1E1C] text-[#F9F7F3]"
+        data-testid="waitlist-section"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="md:col-span-1">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">04 — Waitlist</p>
+          </div>
+          <div className="md:col-span-5">
+            <h2 className="font-serif-display text-4xl md:text-6xl leading-[1.05] text-[#F9F7F3]">
+              Be the first <em className="text-[#C9C2B0]">to know.</em>
+            </h2>
+            <p className="mt-8 text-base md:text-lg text-[#F9F7F3]/60 leading-relaxed max-w-md">
+              Subscribe for an early invitation to our debut. No noise — only what matters, only when it does.
+            </p>
+          </div>
+
+          <div className="md:col-start-8 md:col-span-5 flex items-end">
+            {submitted ? (
+              <div className="w-full py-10 border-t border-[#F9F7F3]/20" data-testid="waitlist-success">
+                <p className="font-serif-display italic text-2xl md:text-3xl text-[#C9C2B0]">
+                  Welcome to VELVENYA.
+                </p>
+                <p className="mt-3 text-sm text-[#F9F7F3]/60">
+                  You will be the first to know when we arrive.
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="w-full"
+                data-testid="waitlist-form"
+                noValidate
+              >
+                <label
+                  htmlFor="email"
+                  className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50"
+                >
+                  Your email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@somewhere.world"
+                  className="w-full bg-transparent border-b border-[#F9F7F3]/40 focus:border-[#C9C2B0] outline-none px-0 py-4 mt-3 text-lg md:text-2xl text-[#F9F7F3] placeholder-[#F9F7F3]/30 transition-colors"
+                  data-testid="waitlist-email-input"
+                />
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-[#F9F7F3] text-[#1C1E1C] uppercase tracking-[0.25em] text-xs hover:bg-[#C9C2B0] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  data-testid="waitlist-submit-button"
+                >
+                  {loading ? "Subscribing…" : "Subscribe"}
+                  <ArrowUpRight size={14} strokeWidth={1.2} />
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== Contact / Footer ===== */}
+      <footer
+        id="contact"
+        className="px-6 md:px-12 py-24 md:py-32 bg-[#0F110F] text-[#F9F7F3]"
+        data-testid="footer-section"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          <div className="md:col-span-5">
+            <p className="text-[11px] uppercase tracking-[0.3em] text-[#F9F7F3]/50">Contact</p>
+            <h3 className="font-serif-display text-3xl md:text-5xl mt-6 leading-[1.05]">
+              For press, partnerships, and patient curiosity.
+            </h3>
+          </div>
+
+          <div className="md:col-start-7 md:col-span-3 space-y-6">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">Email</p>
+              <a
+                href="mailto:velvenyapvtltd@gmail.com"
+                className="mt-2 inline-flex items-center gap-2 text-base md:text-lg link-underline"
+                data-testid="contact-email-link"
+              >
+                <Mail size={14} strokeWidth={1.2} /> velvenyapvtltd@gmail.com
+              </a>
+            </div>
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">Studio</p>
+              <p className="mt-2 inline-flex items-center gap-2 text-base md:text-lg">
+                <MapPin size={14} strokeWidth={1.2} /> Andhra Pradesh, India
+              </p>
+            </div>
+          </div>
+
+          <div className="md:col-span-3 space-y-6">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">Elsewhere</p>
+            <div className="space-y-3">
+              <a
+                href="https://instagram.com/velvenya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 link-underline"
+                data-testid="social-instagram"
+              >
+                <Instagram size={16} strokeWidth={1.2} /> Instagram — @velvenya
+              </a>
+              <a
+                href="https://www.linkedin.com/company/velvenya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 link-underline"
+                data-testid="social-linkedin"
+              >
+                <Linkedin size={16} strokeWidth={1.2} /> LinkedIn — Velvenya Pvt Ltd
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-[#F9F7F3]/40"
+                data-testid="social-twitter"
+              >
+                <Twitter size={16} strokeWidth={1.2} /> Twitter — soon
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-3 text-[#F9F7F3]/40"
+                data-testid="social-facebook"
+              >
+                <Facebook size={16} strokeWidth={1.2} /> Facebook — soon
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20 md:mt-28 pt-8 border-t border-[#F9F7F3]/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <p className="font-serif-display text-2xl tracking-[0.4em]">VELVENYA</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40">
+            © {new Date().getFullYear()} Velvenya Private Limited — All rights reserved
+          </p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-[#F9F7F3]/40 italic">
+            Silence is the oldest luxury.
+          </p>
+        </div>
+      </footer>
+    </main>
+  );
+};
+
+export default ComingSoon;
