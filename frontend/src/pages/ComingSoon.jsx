@@ -26,10 +26,7 @@ const ComingSoon = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    // ping the API root so the backend is awoken (and to verify connectivity)
-    axios.get(`${API}/`).catch(() => {});
-  }, []);
+  
 
  const handleSubmit = async (e) => {
   e.preventDefault();
