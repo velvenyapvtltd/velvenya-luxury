@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import { Instagram, Linkedin, ArrowUpRight, MapPin, Mail } from "lucide-react";
 import { toast } from "sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+
 
 const NAV_LINKS = [
   { label: "Brand", href: "#brand" },
@@ -32,25 +31,39 @@ const ComingSoon = () => {
     axios.get(`${API}/`).catch(() => {});
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await axios.post(`${API}/waitlist`, { email });
-      toast.success(res.data.message || "Welcome to VELVENYA.");
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+    toast.error("Please enter a valid email address.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    const response = await fetch("https://formspree.io/f/mbdrordj", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    if (response.ok) {
+      toast.success("Welcome to VELVENYA.");
       setSubmitted(true);
       setEmail("");
-    } catch (err) {
-      const msg = err?.response?.data?.detail || "Something went quiet. Please try again.";
-      toast.error(typeof msg === "string" ? msg : "Could not subscribe.");
-    } finally {
-      setLoading(false);
+    } else {
+      toast.error("Something went wrong.");
     }
-  };
+  } catch (error) {
+    toast.error("Network error.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#F9F7F3] text-[#1C1E1C] selection:bg-[#3E4C3B] selection:text-[#F9F7F3]" data-testid="coming-soon-page">
