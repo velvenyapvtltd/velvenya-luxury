@@ -71,19 +71,20 @@ async def join_waitlist(payload: WaitlistCreate):
     doc["created_at"] = doc["created_at"].isoformat()
     doc["email"] = str(doc["email"])
 
-    await db.waitlist.insert_one(doc)
+        await db.waitlist.insert_one(doc)
+
     try:
-    resend.Emails.send({
-        "from": "onboarding@resend.dev",
-        "to": "velvenyapvtltd@gmail.com",
-        "subject": "New Velvenya Waitlist Signup",
-        "html": f"""
-        <h2>New Waitlist Signup</h2>
-        <p>Email: {email}</p>
-        """
-    })
-except Exception as e:
-    logger.error(f"Resend email failed: {str(e)}")
+        resend.Emails.send({
+            "from": "onboarding@resend.dev",
+            "to": "velvenyapvtltd@gmail.com",
+            "subject": "New Velvenya Waitlist Signup",
+            "html": f"""
+            <h2>New Waitlist Signup</h2>
+            <p>Email: {email}</p>
+            """
+        })
+    except Exception as e:
+        logger.error(f"Resend email failed: {str(e)}")
 
     return WaitlistResponse(
         id=entry.id,
