@@ -8,8 +8,8 @@ from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import List
 import uuid
-from datetime import datetime, timezone
-
+from datetime import datetime, timezone 
+import resend
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -18,7 +18,7 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
-
+resend.api_key = os.environ["RESEND_API_KEY"]
 # Create the main app without a prefix
 app = FastAPI(title="VELVENYA API")
 
@@ -72,6 +72,18 @@ async def join_waitlist(payload: WaitlistCreate):
     doc["email"] = str(doc["email"])
 
     await db.waitlist.insert_one(doc)
+    try:
+    resend.Emails.send({
+        "from": "onboarding@resend.dev",
+        "to": "velvenyapvtltd@gmail.com",
+        "subject": "New Velvenya Waitlist Signup",
+        "html": f"""
+        <h2>New Waitlist Signup</h2>
+        <p>Email: {email}</p>
+        """
+    })
+except Exception as e:
+    logger.error(f"Resend email failed: {str(e)}")
 
     return WaitlistResponse(
         id=entry.id,
